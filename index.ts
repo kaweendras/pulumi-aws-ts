@@ -55,6 +55,14 @@ const api = new aws.apigateway.RestApi("pulumi-myApi", {
   description: "API Gateway for Lambda function",
 });
 
+// Grant API Gateway permission to invoke the Lambda function
+const lambdaPermission = new aws.lambda.Permission("apiGatewayInvoke", {
+  action: "lambda:InvokeFunction",
+  function: lambdaFunction.name,
+  principal: "apigateway.amazonaws.com",
+  sourceArn: pulumi.interpolate`${api.executionArn}/*/*`,
+});
+
 const resource = new aws.apigateway.Resource("resource", {
   restApi: api.id,
   parentId: api.rootResourceId,
