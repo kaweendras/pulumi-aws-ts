@@ -3,7 +3,7 @@
 import * as aws from "@pulumi/aws";
 import * as apigateway from "@pulumi/aws-apigateway";
 
-import { handler } from "./handler";
+import { infoHandlers } from "./handler";
 
 // Create an API endpoint.
 const api = new apigateway.RestAPI("api", {
@@ -11,7 +11,7 @@ const api = new apigateway.RestAPI("api", {
     {
       path: "/",
       method: "GET",
-      eventHandler: handler,
+      eventHandler: infoHandlers.HelloWorldHandler,
     },
   ],
 });
