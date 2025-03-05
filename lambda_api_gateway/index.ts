@@ -8,7 +8,7 @@ import { createS3Bucket } from "./resources/s3";
 
 //create resources
 //s3 bucket
-const bucket = createS3Bucket();
+const bucket = createS3Bucket("pulumi-bucket");
 
 // Create an API endpoint.
 const api = new apigateway.RestAPI("api", {
