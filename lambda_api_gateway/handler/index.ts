@@ -1,3 +1,4 @@
-import * as infoHandlers from "./infoHandlers/helloWorld.handler";
+import * as infoHandlers from "./infoHandlers";
+import * as s3Handlers from "./bucketHandlers";
 
-export { infoHandlers };
+export { infoHandlers, s3Handlers };
